@@ -1,0 +1,96 @@
+/* ═══════════════════════════════════════════
+   tokens.css — Design tokens & CSS Custom Props
+   ═══════════════════════════════════════════ */
+
+:root {
+
+  /* ── Color palette ── */
+  --c-void:      #000000;
+  --c-deep:      #050505;
+  --c-surface:   #0a0a0a;
+  --c-muted:     #111111;
+  --c-border:    rgba(255,255,255,0.06);
+
+  --c-white:     #ffffff;
+  --c-offwhite:  #f0ece4;
+  --c-warm:      #e8ddd0;
+  --c-silver:    #aaaaaa;
+  --c-dim:       #555555;
+
+  /* Accent — icy blue-white used sparingly */
+  --c-accent:    #c8bfff;
+  --c-accent-dim: rgba(200,191,255,0.15);
+  --c-glow:      rgba(200,191,255,0.08);
+
+  /* ── Typography ── */
+  --font-script:  'Playwrite England Joined', cursive;      /* romantic / script */
+  --font-display: 'Bebas Neue', sans-serif;                  /* architectural / bold */
+  --font-serif:   'Cormorant Garamond', serif;               /* editorial / elegant */
+  --font-mono:    'Space Mono', monospace;                   /* raw / collage feel */
+
+  /* ── Spacing scale (8dp rhythm) ── */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  24px;
+  --sp-6:  32px;
+  --sp-7:  48px;
+  --sp-8:  64px;
+  --sp-9:  96px;
+  --sp-10: 128px;
+
+  /* ── Typography scale ── */
+  --fs-xs:   0.6875rem;   /* 11px */
+  --fs-sm:   0.8125rem;   /* 13px */
+  --fs-base: 1rem;        /* 16px */
+  --fs-md:   1.25rem;     /* 20px */
+  --fs-lg:   1.75rem;     /* 28px */
+  --fs-xl:   2.5rem;      /* 40px */
+  --fs-2xl:  4rem;        /* 64px */
+  --fs-3xl:  6rem;        /* 96px */
+  --fs-4xl:  9rem;        /* 144px */
+  --fs-5xl:  clamp(5rem, 18vw, 16rem);
+
+  /* ── Motion ── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-expo:  cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-bounce:   cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --dur-instant:  80ms;
+  --dur-fast:     150ms;
+  --dur-base:     300ms;
+  --dur-slow:     600ms;
+  --dur-cinematic:1200ms;
+
+  /* ── Audio-reactive props (updated by JS) ── */
+  --audio-bass:   0;     /* 0–1 */
+  --audio-mid:    0;     /* 0–1 */
+  --audio-high:   0;     /* 0–1 */
+  --audio-rms:    0;     /* 0–1 overall energy */
+
+  /* ── Z-index layers ── */
+  --z-canvas:   0;
+  --z-bg:       1;
+  --z-grain:    2;
+  --z-content:  10;
+  --z-meta:     20;
+  --z-controls: 30;
+  --z-loader:   100;
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant:   0ms;
+    --dur-fast:      0ms;
+    --dur-base:      0ms;
+    --dur-slow:      0ms;
+    --dur-cinematic: 0ms;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

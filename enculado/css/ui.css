@@ -1,0 +1,83 @@
+/* ═══════════════════════════════════════════
+   ui.css — Buttons, controls, interactive UI
+   ═══════════════════════════════════════════ */
+
+/* ── Start button ── */
+.btn-start {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-6);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-void);
+  background: var(--c-white);
+  border-radius: 100px;
+  transition: background var(--dur-fast) ease,
+              transform var(--dur-fast) var(--ease-bounce),
+              box-shadow var(--dur-fast) ease;
+  min-height: 44px; /* touch target */
+}
+
+.btn-start:hover {
+  background: var(--c-accent);
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(200, 191, 255, 0.3);
+}
+
+.btn-start:active {
+  transform: scale(0.97);
+}
+
+/* ── Control buttons ── */
+.ctrl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 44px;  /* accessible touch target */
+  min-height: 44px;
+  color: var(--c-silver);
+  transition: color var(--dur-fast) ease,
+              transform var(--dur-fast) var(--ease-bounce);
+}
+
+.ctrl svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.ctrl:hover {
+  color: var(--c-white);
+  transform: scale(1.15);
+}
+
+.ctrl:active {
+  transform: scale(0.9);
+}
+
+/* Volume icon waves */
+.vol-wave {
+  transition: opacity var(--dur-fast) ease;
+}
+
+body.muted .vol-wave {
+  opacity: 0;
+}
+
+/* ── Progress interaction ── */
+.progress-wrap {
+  position: relative;
+  min-height: 44px;  /* accessible touch area */
+}
+
+.progress-track {
+  cursor: pointer;
+}
+
+.progress-track:hover .progress-bar {
+  background: var(--c-accent);
+}

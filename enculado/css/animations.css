@@ -1,0 +1,121 @@
+/* ═══════════════════════════════════════════
+   animations.css — Keyframes & transitions
+   ═══════════════════════════════════════════ */
+
+/* ── Fade Cinematic ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0);    }
+  to   { opacity: 0; transform: translateY(-12px); }
+}
+
+/* ── Blur Reveal ── */
+@keyframes blurReveal {
+  from { opacity: 0; filter: blur(24px); transform: scale(0.96); }
+  to   { opacity: 1; filter: blur(0px);  transform: scale(1);    }
+}
+
+@keyframes blurExit {
+  from { opacity: 1; filter: blur(0px); }
+  to   { opacity: 0; filter: blur(16px); }
+}
+
+/* ── Scale Reveal ── */
+@keyframes scaleReveal {
+  from { opacity: 0; transform: scale(0.8) skewX(-4deg); }
+  to   { opacity: 1; transform: scale(1)   skewX(0deg);  }
+}
+
+/* ── Slide Up ── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Tracking expand ── */
+@keyframes trackIn {
+  from { opacity: 0; letter-spacing: -0.1em; }
+  to   { opacity: 1; letter-spacing: inherit; }
+}
+
+/* ── Wave motion (floating) ── */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-8px); }
+}
+
+@keyframes floatSlow {
+  0%,100% { transform: translateY(0) rotate(-1deg); }
+  50%     { transform: translateY(-12px) rotate(1deg); }
+}
+
+/* ── Vibration ── */
+@keyframes vibrate {
+  0%,100% { transform: translate(0, 0); }
+  20%     { transform: translate(-2px, 1px); }
+  40%     { transform: translate(2px, -1px); }
+  60%     { transform: translate(-1px, 2px); }
+  80%     { transform: translate(1px, -2px); }
+}
+
+/* ── Pulse glow ── */
+@keyframes pulseGlow {
+  0%,100% { text-shadow: 0 0 20px rgba(200,191,255,0.2); }
+  50%     { text-shadow: 0 0 60px rgba(200,191,255,0.5), 0 0 100px rgba(200,191,255,0.2); }
+}
+
+/* ── Loader label animate ── */
+@keyframes loaderPulse {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0.4; }
+}
+
+/* ── Grain drift ── */
+@keyframes grainDrift {
+  0%         { transform: translate(0, 0);       }
+  10%        { transform: translate(-1%, -1%);   }
+  20%        { transform: translate(1%, 1%);     }
+  30%        { transform: translate(-1%, 2%);    }
+  40%        { transform: translate(2%, -1%);    }
+  50%        { transform: translate(-2%, 2%);    }
+  60%        { transform: translate(1%, -2%);    }
+  70%        { transform: translate(-1%, 1%);    }
+  80%        { transform: translate(2%, 2%);     }
+  90%        { transform: translate(-2%, -2%);   }
+  100%       { transform: translate(0, 0);       }
+}
+
+/* ── Entrance animations — applied by JS ── */
+.anim--fade-in     { animation: fadeIn      var(--dur-cinematic) var(--ease-out-expo) forwards; }
+.anim--blur-reveal { animation: blurReveal  var(--dur-cinematic) var(--ease-out-expo) forwards; }
+.anim--scale-in    { animation: scaleReveal var(--dur-slow)      var(--ease-bounce)   forwards; }
+.anim--slide-up    { animation: slideUp     var(--dur-slow)      var(--ease-out-expo) forwards; }
+.anim--track-in    { animation: trackIn     var(--dur-cinematic) var(--ease-out-expo) forwards; }
+.anim--float       { animation: float       3s ease-in-out infinite; }
+.anim--float-slow  { animation: floatSlow   5s ease-in-out infinite; }
+.anim--glow-pulse  { animation: pulseGlow   2s ease-in-out infinite; }
+.anim--vibrate     { animation: vibrate     0.15s linear infinite; }
+
+/* ── Exit animations ── */
+.anim--fade-out    { animation: fadeOut     var(--dur-slow) var(--ease-in-expo) forwards; }
+.anim--blur-exit   { animation: blurExit    var(--dur-slow) var(--ease-in-expo) forwards; }
+
+/* ── Loader ── */
+.loader__label { animation: loaderPulse 3s ease-in-out infinite; }
+.grain         { animation: grainDrift 0.5s steps(1) infinite; }
+
+/* ── Stagger delays — for word-by-word reveals ── */
+.lyric-word:nth-child(1)  { animation-delay: calc(0   * 80ms); }
+.lyric-word:nth-child(2)  { animation-delay: calc(1   * 80ms); }
+.lyric-word:nth-child(3)  { animation-delay: calc(2   * 80ms); }
+.lyric-word:nth-child(4)  { animation-delay: calc(3   * 80ms); }
+.lyric-word:nth-child(5)  { animation-delay: calc(4   * 80ms); }
+.lyric-word:nth-child(6)  { animation-delay: calc(5   * 80ms); }
+.lyric-word:nth-child(7)  { animation-delay: calc(6   * 80ms); }
+.lyric-word:nth-child(8)  { animation-delay: calc(7   * 80ms); }
+.lyric-word:nth-child(9)  { animation-delay: calc(8   * 80ms); }
+.lyric-word:nth-child(10) { animation-delay: calc(9   * 80ms); }

@@ -1,0 +1,190 @@
+/* ═══════════════════════════════════════════
+   typography.css — Font helpers & lyric styles
+   ═══════════════════════════════════════════ */
+
+/* ── Font utility classes ── */
+.font-script  { font-family: var(--font-script);  }
+.font-display { font-family: var(--font-display); }
+.font-serif   { font-family: var(--font-serif);   }
+.font-mono    { font-family: var(--font-mono);    }
+
+/* ── Loader type ── */
+.loader__label {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--c-white);
+  line-height: 1;
+}
+
+.loader__sub {
+  font-size: var(--fs-sm);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--c-dim);
+}
+
+.loader__hint {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.2em;
+  color: var(--c-dim);
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+/* ── Meta header type ── */
+.meta__artist {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--c-dim);
+}
+
+.meta__title {
+  font-size: var(--fs-md);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-offwhite);
+}
+
+/* ══════════════════════════════
+   LYRIC LINE SYSTEM
+   ══════════════════════════════ */
+
+/* Container for each lyric moment */
+.lyric-line {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.lyric-line.active {
+  pointer-events: auto;
+}
+
+/* The inner layout wrapper — shifts per line config */
+.lyric-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  width: 100%;
+  max-width: 900px;
+  padding: 0 var(--sp-6);
+  position: relative;
+}
+
+/* ── Word elements ── */
+.lyric-word {
+  display: inline-block;
+  line-height: 1;
+  cursor: default;
+  will-change: transform, filter, opacity;
+  transition: transform 0.05s ease,
+              filter 0.05s ease;
+}
+
+/* ── Style variants ── */
+
+/* SCRIPT — romantic, cursive intimate lines */
+.lyric-word--script {
+  font-family: var(--font-script);
+  font-weight: 300;
+  color: var(--c-offwhite);
+  letter-spacing: -0.01em;
+}
+
+/* DISPLAY — heavy brutalist beats */
+.lyric-word--display {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-white);
+}
+
+/* SERIF — editorial elegance */
+.lyric-word--serif {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--c-warm);
+}
+
+/* COLLAGE — mono "newspaper cut" feel */
+.lyric-word--collage {
+  font-family: var(--font-mono);
+  letter-spacing: -0.05em;
+  color: var(--c-silver);
+  position: relative;
+}
+
+/* Size modifiers */
+.lyric-word--giant  { font-size: var(--fs-5xl); }
+.lyric-word--large  { font-size: var(--fs-3xl); }
+.lyric-word--medium { font-size: var(--fs-2xl); }
+.lyric-word--small  { font-size: var(--fs-lg);  }
+.lyric-word--tiny   { font-size: var(--fs-md);  }
+
+/* Rotation helpers */
+.lyric-word--rot-neg { transform: rotate(-8deg);  }
+.lyric-word--rot-pos { transform: rotate(6deg);   }
+.lyric-word--rot-sm  { transform: rotate(-3deg);  }
+
+/* Glow effect — activated by JS */
+.lyric-word--glow {
+  text-shadow:
+    0 0 30px rgba(200, 191, 255, calc(var(--audio-mid) * 0.6)),
+    0 0 60px rgba(200, 191, 255, calc(var(--audio-mid) * 0.3));
+}
+
+/* Bass pulse — controlled via CSS var from JS */
+.lyric-word--bass-pulse {
+  transform: scale(calc(1 + var(--audio-bass) * 0.06));
+}
+
+/* Collage irregular positioning */
+.lyric-word--collage:nth-child(odd) {
+  transform: translateY(-4px) rotate(-2deg);
+}
+.lyric-word--collage:nth-child(even) {
+  transform: translateY(6px) rotate(1.5deg);
+}
+
+/* ── Layout compositions ── */
+
+/* Vertical stack */
+.lyric-inner--vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-1);
+}
+
+/* Asymmetric — content pushed to edges */
+.lyric-inner--asymmetric-left  { align-items: flex-start;  padding-left: 8vw; }
+.lyric-inner--asymmetric-right { align-items: flex-end;    padding-right: 8vw; }
+
+/* Centered */
+.lyric-inner--center { align-items: center; text-align: center; }
+
+/* Full bleed — word fills viewport */
+.lyric-inner--fullbleed {
+  padding: 0 var(--sp-5);
+  align-items: center;
+  text-align: center;
+}
+
+/* Scattered — absolute positioned words */
+.lyric-inner--scattered {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+.lyric-inner--scattered .lyric-word {
+  position: absolute;
+}
